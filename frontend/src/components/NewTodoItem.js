@@ -1,13 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { TOKEN, BASE_URL } from '../services/configs';
 
 const NewTodoItem = () => {
   const [title, setTitle] = useState(null);
   const [status, setStatus] = useState(null);
   const [startDate, setStartDate] = useState(null);
-
-  const BASE_URL = "http://localhost:5000/api"
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY0NzA1NzJiNDA2ZGY5MTQwZTczMTVkIiwidXNlcm5hbWUiOiJwYXVsbmRhbWJvIiwiZW1haWwiOiJwYXVsbmRhbWJvQGdtYWlsLmNvbSIsImZpcnN0X25hbWUiOiJQYXVsIiwibGFzdF9uYW1lIjoiTmRhbWJvIn0sImlhdCI6MTcxNTkzMDUyNSwiZXhwIjoxNzE1OTY2NTI1fQ.6ReW8VHxVDnruQnI1XckJm3--uwCgRo597VUs850eR0"
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +22,7 @@ const NewTodoItem = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `${token}`
+          "Authorization": `${TOKEN}`
         },
         body: JSON.stringify(todoItem)
       })

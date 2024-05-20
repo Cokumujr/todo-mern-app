@@ -10,7 +10,7 @@ const verifyToken = async(req, res, next) => {
         next();
 
     } catch (error) {
-        cosole.log({ error: error.message })
+        console.log({ error: error.message })
         return res.status(400).send({ error: error.message })
     }
 }

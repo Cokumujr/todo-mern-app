@@ -10,8 +10,8 @@ const Navbar = () => {
     </button>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-      <li class="nav-item">
-          <a class="nav-link text-white" href="/shopping-list">Shopping List</a>
+      <li className="nav-item">
+          <a className="nav-link text-white" href="/shopping-list">Shopping List</a>
         </li>
       </ul>
       <form className="d-flex" role="search">

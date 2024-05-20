@@ -5,6 +5,43 @@ const getItems = async(req, res) => {
     res.send({ count: items.length, items: items })
 }
 
+
+const getItemById = async(req, res) => {
+    const { id } = req.params
+    try {
+        const item = await ShoppingList.findById({ "_id": id})
+        if(!item) return res.status(404).send({ error: `Item with id: ${id} not found!!` })
+        res.send(item).status(200)
+    } catch (error) {
+        console.log({ error: error.message })
+        return res.status(400).send({ error: error.message })
+    }
+}
+
+const updateItem = async(req, res) => {
+    const { body, params: { id } } = req
+    try {
+        const item = await ShoppingList.findByIdAndUpdate(id, {...body}, { new: true })
+        if(!item) return res.status(404).send({ error: `Item with id: ${id} not found!!` })
+        res.send(item).status(200)
+    } catch (error) {
+        console.log({ error: error.message })
+        return res.status(400).send({ error: error.message })
+    }
+}
+
+const deleteItem = async(req, res) => {
+    const { id } = req.params
+    try {
+        const item = await ShoppingList.findByIdAndDelete({ "_id": id })
+        if(!item) return res.status(404).send({ error: `Item with id: ${id} not found!!` })
+        res.send(item).status(200)
+    } catch (error) {
+        console.log({ error: error.message })
+        return res.status(400).send({ error: error.message })
+    }
+}
+
 const createItem = async(req, res) => {
     const { item, quantity, total_price } = req.body
 
@@ -31,5 +68,8 @@ const createItem = async(req, res) => {
 
 module.exports = {
     getItems,
-    createItem
+    createItem,
+    getItemById,
+    updateItem,
+    deleteItem
 }

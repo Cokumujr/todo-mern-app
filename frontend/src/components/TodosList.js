@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import { BASE_URL, TOKEN } from '../services/configs';
 
 const TodosList = () => {
     const [todos, setTodos] = useState([]);
-
-    const BASE_URL = "http://localhost:5000/api"
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY0NzA1NzJiNDA2ZGY5MTQwZTczMTVkIiwidXNlcm5hbWUiOiJwYXVsbmRhbWJvIiwiZW1haWwiOiJwYXVsbmRhbWJvQGdtYWlsLmNvbSIsImZpcnN0X25hbWUiOiJQYXVsIiwibGFzdF9uYW1lIjoiTmRhbWJvIn0sImlhdCI6MTcxNTkzMDUyNSwiZXhwIjoxNzE1OTY2NTI1fQ.6ReW8VHxVDnruQnI1XckJm3--uwCgRo597VUs850eR0"
 
     useEffect(() => {
         const getTodos = async() => {
@@ -12,7 +10,7 @@ const TodosList = () => {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `${token}`
+                    "Authorization": `${TOKEN}`
                 }
             })
             const data = await response.json()
@@ -40,7 +38,7 @@ const TodosList = () => {
                         <td>{todo.start_date}</td>
                         <td>{todo.status}</td>
                         <td>
-                            <a href='#' className='btn btn-info btn-sm'><i className="bi bi-eye"></i></a>
+                            <a href={`/todos/${todo._id}`} className='btn btn-info btn-sm'><i className="bi bi-eye"></i></a>
                         </td>
                         <td>
                             <a href='#' className='btn btn-primary btn-sm'><i className="bi bi-pencil-square"></i></a>

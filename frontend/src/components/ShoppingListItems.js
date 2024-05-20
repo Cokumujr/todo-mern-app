@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { BASE_URL, TOKEN } from '../services/configs';
 
 const ShoppingListItems = () => {
     const [items, setItems] = useState([])
-
-    const BASE_URL = "http://localhost:5000/api"
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY0NzA1NzJiNDA2ZGY5MTQwZTczMTVkIiwidXNlcm5hbWUiOiJwYXVsbmRhbWJvIiwiZW1haWwiOiJwYXVsbmRhbWJvQGdtYWlsLmNvbSIsImZpcnN0X25hbWUiOiJQYXVsIiwibGFzdF9uYW1lIjoiTmRhbWJvIn0sImlhdCI6MTcxNTkzMDUyNSwiZXhwIjoxNzE1OTY2NTI1fQ.6ReW8VHxVDnruQnI1XckJm3--uwCgRo597VUs850eR0"
 
     useEffect(() => {
         const getItems = async() => {
@@ -12,7 +11,7 @@ const ShoppingListItems = () => {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `${token}`
+                    "Authorization": `${TOKEN}`
                 }
             })
 
@@ -41,7 +40,7 @@ const ShoppingListItems = () => {
                 <td>{shopping_item.quantity}</td>
                 <td>{shopping_item.total_price}</td>
                 <td>
-                    <a href='#' className='btn btn-info btn-sm'><i className="bi bi-eye"></i></a>
+                    <a href={`/shopping-list/${shopping_item._id}`} className='btn btn-info btn-sm'><i className="bi bi-eye"></i></a>
                 </td>
                 <td>
                     <a href='#' className='btn btn-primary btn-sm'><i className="bi bi-pencil-square"></i></a>

@@ -21,6 +21,7 @@ const register = async(req, res) => {
         if(!newUser) return res.status(400).send({ error: "User could not be created" })
         res.send(newUser).status(201)
 
+        
     } catch (error) {
         console.log({ error: error.message })
         return res.status(400).send({ error: error.message })

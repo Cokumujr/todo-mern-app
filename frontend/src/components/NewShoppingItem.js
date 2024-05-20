@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { BASE_URL, TOKEN } from '../utils/configs'
+
 
 const NewShoppingItem = () => {
     const [item, setItem] = useState(null);
     const [quantity, setQuantity] = useState(null);
     const [totalPrice, setTotalPrice] = useState(null);
-    const BASE_URL = "http://localhost:5000/api"
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY0NzA1NzJiNDA2ZGY5MTQwZTczMTVkIiwidXNlcm5hbWUiOiJwYXVsbmRhbWJvIiwiZW1haWwiOiJwYXVsbmRhbWJvQGdtYWlsLmNvbSIsImZpcnN0X25hbWUiOiJQYXVsIiwibGFzdF9uYW1lIjoiTmRhbWJvIn0sImlhdCI6MTcxNTkzMDUyNSwiZXhwIjoxNzE1OTY2NTI1fQ.6ReW8VHxVDnruQnI1XckJm3--uwCgRo597VUs850eR0"
-
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -23,7 +23,7 @@ const NewShoppingItem = () => {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": `${token}`
+                        "Authorization": `${TOKEN}`
                     },
                     body: JSON.stringify(shoppingItem)
                 })
