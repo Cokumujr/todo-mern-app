@@ -23,7 +23,7 @@ const authRoutes = require("./routes/auth");
 const todoRoutes = require("./routes/todo");
 const itemRoutes = require("./routes/shopping_list");
 
-app.get("/", (req, res) => {
+app.get("/healthz", (req, res) => {
     res.send({ message: "The server is running!!" }).status(200)
 });
 
