@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { BASE_URL, TOKEN } from '../services/configs';
+import { BASE_URL, TOKEN } from '../utils/configs';
 
 const ShoppingItemDetails = () => {
-    const [item, setItem] = useState({});
+    const [shoppingItem, setShoppingItem] = useState({});
 
     const { id } = useParams();
 
@@ -20,6 +20,7 @@ const ShoppingItemDetails = () => {
                 }
             })
             const data = await response.json()
+            setShoppingItem(data)
             console.log({ data })
         }
         getShoppingListItem()
@@ -32,11 +33,16 @@ const ShoppingItemDetails = () => {
             <div className='col-4'>
             <div className="card" style={{ width: '25rem' }}>
                 <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
-                    <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" className="card-link">Card link</a>
-                    <a href="#" className="card-link">Another link</a>
+                    <h5 className="card-title">{shoppingItem.item}</h5>
+                    
+                    <p className="card-text">Quantity: {shoppingItem.quantity}</p>
+                    <p className="card-text">Total Cost: {shoppingItem.total_price}</p>
+                    <hr/>
+                    <div className='text-center'>
+                        <a href='#' className='btn btn-primary'>
+                        <i className="bi bi-pencil-square"></i>
+                        </a>
+                    </div>
                 </div>
                 </div>
             </div>

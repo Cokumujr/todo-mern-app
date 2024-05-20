@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import ShoppingList from "./components/ShoppingList";
 import TodoDetail from "./components/TodoDetail";
 import ShoppingItemDetails from "./components/ShoppingItemDetails";
+import EditShoppingListItem from "./components/EditShoppingListItem";
 
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
           <Route path="/" exact element={<Todos />} /> 
           <Route path="/todos/:id" element={<TodoDetail />} />
           <Route path="/shopping-list" element={<ShoppingList />} />  
-          <Route path="/shopping-list/:id" element={<ShoppingItemDetails />} />      
+          <Route path="/shopping-list/:id" element={<ShoppingItemDetails />} />  
+          <Route path="/shopping-list/:id/edit" element={<EditShoppingListItem />} />    
         </Routes>
       </Router>
   
