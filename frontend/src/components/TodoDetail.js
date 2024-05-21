@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { TOKEN, BASE_URL } from "../services/configs";
+import { TOKEN} from "../services/configs";
+import Cookies from "js-cookie";
 
 const TodoDetail = () => {
+  const TOKEN = Cookies.get("token")
+  
   const [todoItem, setTodoItem] = useState({});
   const { id } = useParams();
   console.log({ id: id });

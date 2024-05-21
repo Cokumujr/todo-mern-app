@@ -8,7 +8,9 @@ import ShoppingList from "./components/ShoppingList";
 import TodoDetail from "./components/TodoDetail";
 import ShoppingItemDetails from "./components/ShoppingItemDetails";
 import EditShoppingListItem from "./components/EditShoppingListItem";
-import Login from "./auth/Login";
+
+import Authenticate from "./auth/Authenticate";
+
 import { useState } from "react";
 
 
@@ -31,8 +33,9 @@ function App() {
       </Router>
     </div>
     ) : (
-      <Login />
+      <Authenticate />
   )}
+ 
     </>
   );
 }

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { TOKEN, BASE_URL } from '../services/configs';
+import { BASE_URL } from '../services/configs';
+import Cookies from 'js-cookie';
 
 const DeleteShoppingItem = ({item, closeDeleteModal}) => {
+    const TOKEN = Cookies.get("token")
     const [deletedItem, setDeletedItem] = useState(null);
     const navigate = useNavigate()
 

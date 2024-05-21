@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { BASE_URL, TOKEN } from '../services/configs';
+import { BASE_URL } from '../services/configs';
+import Cookies from 'js-cookie';
 
 const TodosList = () => {
+    const TOKEN = Cookies.get("token")
+
     const [todos, setTodos] = useState([]);
 
     useEffect(() => {

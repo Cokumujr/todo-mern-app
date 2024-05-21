@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { TOKEN, BASE_URL } from '../services/configs';
+import { BASE_URL } from '../services/configs';
+import Cookies from 'js-cookie';
 
 const NewTodoItem = () => {
+  const TOKEN = Cookies.get("token")
+
   const [title, setTitle] = useState(null);
   const [status, setStatus] = useState(null);
   const [startDate, setStartDate] = useState(null);

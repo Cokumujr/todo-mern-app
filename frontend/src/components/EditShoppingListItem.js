@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { BASE_URL, TOKEN } from '../services/configs';
+import { BASE_URL } from '../services/configs';
+import Cookies from 'js-cookie';
 
 const EditShoppingListItem = () => {
+    const TOKEN = Cookies.get("token")
     const [shoppingItem, setShoppingItem] = useState({ item: '', quantity: '', totalPrice: '' });
     const [item, setItem] = useState('');
     const [quantity, setQuantity] = useState('');

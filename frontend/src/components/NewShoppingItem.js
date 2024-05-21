@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import { BASE_URL, TOKEN } from '../utils/configs'
+import { BASE_URL } from '../utils/configs'
+import Cookies from 'js-cookie';
 
 
 const NewShoppingItem = () => {
+    const TOKEN = Cookies.get("token")
+    
     const [item, setItem] = useState(null);
     const [quantity, setQuantity] = useState(null);
     const [totalPrice, setTotalPrice] = useState(null);

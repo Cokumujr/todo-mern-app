@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { BASE_URL, TOKEN } from "../services/configs";
+import { BASE_URL } from "../services/configs";
 import DeleteShoppingItem from "./DeleteShoppingItem";
+import Cookies from "js-cookie"
 
 const ShoppingListItems = () => {
   const [items, setItems] = useState([]);
+  const TOKEN = Cookies.get("token")
 
   // This code deals with deleting a shopping item using a modal
   const [itemToDelete, setItemToDelete] = useState(null);

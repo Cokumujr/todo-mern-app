@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import Cookies from "js-cookie"
 
-import { BASE_URL, TOKEN } from '../utils/configs';
+import { BASE_URL } from '../utils/configs';
 
 const ShoppingItemDetails = () => {
+    const TOKEN = Cookies.get("token")
     const [shoppingItem, setShoppingItem] = useState({});
 
     const { id } = useParams();

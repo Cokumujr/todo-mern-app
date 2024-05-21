@@ -1,9 +1,16 @@
 import React from 'react';
 import { jwtDecode } from 'jwt-decode';
+import Cookies from 'js-cookie';
 
 const Navbar = ({ token }) => {
   const user = jwtDecode(token)
   console.log(user.user)
+
+  const handleLogout = async() => {
+    Cookies.remove("token");
+    window.location.reload();
+  }
+
   return (
     <nav className="navbar navbar-expand-lg bg-dark text-white">
   <div className="container-fluid">
@@ -19,6 +26,7 @@ const Navbar = ({ token }) => {
       </ul>
       <form className="d-flex" role="search">
         <h3>Hello, {user.user.username}</h3>
+        <button className='btn btn-warning btn-sm' onClick={handleLogout}>Logout</button>
       </form>
     </div>
   </div>

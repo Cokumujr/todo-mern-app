@@ -4,8 +4,9 @@ import { BASE_URL } from '../utils/configs';
 import { jwtDecode } from "jwt-decode"
 import Cookies from "js-cookie"
 
-const Login = () => {
+import Register from './Register';
 
+const Login = ({ showLoginForm, setShowLoginForm }) => {
     //const navigateTo = useNavigate();
     const fiveSeconds = 5 * 1000; // convert seconds to milliseconds
     const expiresDate = new Date(Date.now() + fiveSeconds);
@@ -44,7 +45,7 @@ const Login = () => {
                 localStorage.setItem("user", JSON.stringify(user));
                 sessionStorage.setItem("user", JSON.stringify(user));
 
-                Cookies.set("token", data.token, { expires: expiresDate })
+                Cookies.set("token", data.token, { expires: 1 })
 
                 //navigateTo("/");
                 window.location.reload();
@@ -58,10 +59,8 @@ const Login = () => {
     }
 
   return (
-    <div className='container mt-5'>
-        <div className='row'>
-            <div className='col-4'></div>
-            <div className='col-4'>
+    
+                <div className='col-4'>
                 <h4 className='text-center'>Login</h4>
                 <hr/>
             <form onSubmit={handleSubmit}>
@@ -76,12 +75,10 @@ const Login = () => {
                 <div className='text-center'>
                 <button type="submit" className="btn btn-primary">Submit</button>
                 </div>
-                
+                <br/>
+                <p>No account yet? <a href='#' onClick={() => setShowLoginForm(false)}>Register</a></p>
             </form>
             </div>
-            <div className='col-4'></div>
-        </div>
-    </div>
   )
 }
 
