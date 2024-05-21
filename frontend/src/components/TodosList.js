@@ -24,11 +24,13 @@ const TodosList = () => {
     <div className='col-8'>
         <table className='table table-striped table-sm table-responsive'>
             <thead>
+                <tr>
                 <th>ID</th>
                 <th>Title</th>
                 <th>Start Date</th>
                 <th>Status</th>
                 <th></th>
+                </tr>
             </thead>
             <tbody>
                 {todos.map((todo, index) => {

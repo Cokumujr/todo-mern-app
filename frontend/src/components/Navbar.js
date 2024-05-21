@@ -1,6 +1,9 @@
-import React from 'react'
+import React from 'react';
+import { jwtDecode } from 'jwt-decode';
 
-const Navbar = () => {
+const Navbar = ({ token }) => {
+  const user = jwtDecode(token)
+  console.log(user.user)
   return (
     <nav className="navbar navbar-expand-lg bg-dark text-white">
   <div className="container-fluid">
@@ -15,8 +18,7 @@ const Navbar = () => {
         </li>
       </ul>
       <form className="d-flex" role="search">
-        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-        <button className="btn btn-outline-success" type="submit">Search</button>
+        <h3>Hello, {user.user.username}</h3>
       </form>
     </div>
   </div>
